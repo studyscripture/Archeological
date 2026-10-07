@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relics — Oldest Archaeological Evidence by Religion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0e1116;
+        --bg-soft: #161b23;
+        --card: #1a212c;
+        --line: #2a3342;
+        --text: #e8e4da;
+        --muted: #9aa4b2;
+        --gold: #d4a94e;
+        --gold-soft: #e8c87e;
+        --rust: #c96f4a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.7;
+        font-size: 16.5px;
+    }
+
+    ::selection { background: var(--gold); color: #111; }
+
+    /* ---------- HERO ---------- */
+    header {
+        min-height: 88vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212,169,78,0.14), transparent 60%),
+            radial-gradient(ellipse 60% 50% at 80% 110%, rgba(201,111,74,0.10), transparent 60%),
+            var(--bg);
+    }
+
+    header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(232,228,218,0.055) 1px, transparent 1px);
+        background-size: 26px 26px;
+        pointer-events: none;
+    }
+
+    .eyebrow {
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--gold);
+        margin-bottom: 1.4rem;
+    }
+
+    h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 900;
+        font-size: clamp(2.6rem, 7vw, 5.2rem);
+        line-height: 1.05;
+        max-width: 15ch;
+    }
+
+    h1 em { font-style: italic; color: var(--gold-soft); }
+
+    .subtitle {
+        color: var(--muted);
+        max-width: 56ch;
+        margin-top: 1.6rem;
+        font-size: 1.05rem;
+    }
+
+    .scroll-cue {
+        margin-top: 3.5rem;
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        animation: float 2.6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(8px); }
+    }
+
+    /* ---------- CARDS ---------- */
+    main { max-width: 1080px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+    .religion-card {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 2.5rem;
+        padding: 3.5rem 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .religion-card:last-of-type { border-bottom: none; }
+
+    .date-block { text-align: center; padding-top: 0.4rem; }
+
+    .date-block .era {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: var(--gold);
+        line-height: 1.15;
+    }
+
+    .date-block .era-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+    .date-block .rule { width: 42px; height: 2px; background: var(--gold); margin: 0.9rem auto 0; opacity: 0.6; }
+
+    .card-body h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+
+    .card-body .artifact {
+        color: var(--gold-soft);
+        font-weight: 600;
+        font-size: 1.02rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-body p { margin-bottom: 1rem; color: #cfd3d9; }
+
+    .card-body .note {
+        font-size: 0.92rem;
+        color: var(--muted);
+        background: var(--bg-soft);
+        border-left: 3px solid var(--rust);
+        padding: 0.85rem 1.1rem;
+        border-radius: 0 8px 8px 0;
+        margin-top: 1.2rem;
+    }
+
+    .card-body ul {
+        list-style: none;
+        margin: 0.5rem 0 1rem;
+        display: grid;
+        gap: 0.7rem;
+    }
+
+    .card-body ul li {
+        display: flex;
+        gap: 1.1rem;
+        align-items: flex-start;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.9rem 1.2rem;
+        transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .card-body ul li:hover { border-color: var(--gold); transform: translateX(4px); }
+
+    .card-body ul li img {
+        width: 120px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        flex-shrink: 0;
+        filter: saturate(0.9);
+        transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .card-body ul li:hover img { transform: scale(1.06); filter: saturate(1.15); }
+
+    .ev-text { flex: 1; }
+
+    .card-body ul li b { color: var(--gold-soft); }
+    .card-body ul li .when { color: var(--rust); font-weight: 600; font-size: 0.9rem; }
+
+    /* ---------- TABLE ---------- */
+    .summary { margin-top: 5rem; }
+
+    .summary h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+    }
+
+    th, td { padding: 1.05rem 1.4rem; text-align: left; }
+
+    thead th {
+        background: #212a38;
+        color: var(--gold-soft);
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    tbody tr { border-top: 1px solid var(--line); transition: background 0.2s ease; }
+    tbody tr:hover { background: #202937; }
+    tbody td:first-child { font-family: 'Fraunces', Georgia, serif; font-size: 1.1rem; }
+    tbody td:last-child { color: var(--gold-soft); font-weight: 500; white-space: nowrap; }
+
+    footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+        padding: 3rem 2rem;
+        border-top: 1px solid var(--line);
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 720px) {
+        .religion-card { grid-template-columns: 1fr; gap: 1.2rem; }
+        .date-block { text-align: left; display: flex; align-items: baseline; gap: 0.8rem; }
+        .date-block .rule { display: none; }
+        .card-body ul li img { width: 90px; height: 68px; }
+        th, td { padding: 0.85rem 0.9rem; font-size: 0.92rem; }
+        tbody td:last-child { white-space: normal; }
+    }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<header>
+    <p class="eyebrow">Archaeology &middot; Deep Time</p>
+    <h1>The Oldest Traces of <em>Faith</em></h1>
+    <p class="subtitle">A catalogue of the earliest physical evidence ever uncovered for five of the world's great religions — from Bronze Age fire altars to radiocarbon-dated Qur'an folios. Dates are approximate and reflect mainstream scholarship.</p>
+    <p class="scroll-cue">&darr; Scroll to explore</p>
+</header>
+
+<main>
+
+    <!-- HINDUISM -->
+    <article class="religion-card" id="hinduism">
+        <div class="date-block">
+            <p class="era">2500<br>BCE</p>
+            <p class="era-sub">to 100 BCE</p>
+            <div class="rule"></div>
+        </div>
+        <div class="card-body">
+            <h2>Hinduism</h2>
+            <p class="artifact">From Indus Valley seals to the earliest mention of Vedic gods abroad</p>
+            <ul>
+                <li><img src="https://kimi-web-img.kimi.ai/img/www.harappa.com/7972ab6b1c19d606d1bf84742d93994aec99155f.jpg" alt="Excavated fire altars at Kalibangan" loading="lazy"><div class="ev-text"><b>Fire altars of Kalibangan</b> <span class="when">&middot; c. 2500 BCE</span> — a raised mud-brick altar with a central stele, evidence of a sophisticated ritual fire cult in the Indus Valley Civilization, a possible ancestor of Vedic fire sacrifice.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/2a619908159bba771cfe10d1f807d3879a62e2cf.jpg" alt="The Pashupati seal from Mohenjo-daro" loading="lazy"><div class="ev-text"><b>The Pashupati seal</b> <span class="when">&middot; c. 1900 BCE</span> — found at Mohenjo-daro; a horned figure seated in a yogic posture surrounded by animals, widely read as a proto-Shiva figure.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/media.britishmuseum.org/2c04b51a8d49b488053f417b13855ea7ea90097d.jpg" alt="Cuneiform tablet fragments of a Hittite treaty, British Museum" loading="lazy"><div class="ev-text"><b>The Mitanni treaty</b> <span class="when">&middot; c. 1350 BCE</span> — a Hittite-Mitanni peace treaty that invokes the Vedic gods <b>Mitra, Varuna, Indra, and the Nasatyas</b> as divine witnesses. The earliest written evidence of the Vedic pantheon — found not in India but in Anatolia.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/smarthistory.org/e2b540cd9790ac92b6bdcde8addb250e04367afb.png" alt="Bharhut stupa railing relief with yakshi figure" loading="lazy"><div class="ev-text"><b>Bharhut and Sanchi stupa railings</b> <span class="when">&middot; c. 150&ndash;100 BCE</span> — carved gateways and railings depicting Jataka tales and yaksha/yakshi nature deities, among the oldest large-scale visual art of the tradition.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/b941059fbc63b9bc3ede4971d2d6aa76c449cd7f.jpg" alt="The Heliodorus pillar at Besnagar" loading="lazy"><div class="ev-text"><b>The Heliodorus pillar</b> <span class="when">&middot; c. 113 BCE</span> — a Garuda-topped column by a Greek ambassador proclaiming devotion to <b>Vasudeva</b>; the earliest archaeological evidence of the Bhagavata (Vaishnava) cult.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/marudhararts.com/979fdc38f8cec87d20a87e553ccba4e6ee1880e1.jpg" alt="Gold dinar of Kanishka I depicting Shiva with trident" loading="lazy"><div class="ev-text"><b>Deity evidence — Kanishka's coins</b> <span class="when">&middot; c. 127&ndash;150 CE</span> — Kushan gold coinage depicting <b>Shiva</b> (with trident and bull), <b>Buddha</b>, and a pantheon of Iranian, Greek, and Indian gods; among the earliest named images of Hindu deities.</div></li>
+            </ul>
+            <p class="note"><b>Note:</b> Whether the Indus culture was "Hindu" is actively debated. The Rigveda was composed c. 1500&ndash;1200 BCE but preserved orally for millennia before being written down.</p>
+        </div>
+    </article>
+
+    <!-- ZOROASTRIANISM -->
+    <article class="religion-card" id="zoroastrianism">
+        <div class="date-block">
+            <p class="era">c. 520<br>BCE</p>
+            <p class="era-sub">Achaemenid to Sasanian</p>
+            <div class="rule"></div>
+        </div>
+        <div class="card-body">
+            <h2>Zoroastrianism</h2>
+            <p class="artifact">Royal inscriptions, Magi, and fire temples</p>
+            <ul>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/1e6558cd84d1e0d8df2c57a49cfe94646552a7ed.jpg" alt="Behistun inscription of Darius I" loading="lazy"><div class="ev-text"><b>Behistun inscription of Darius I</b> <span class="when">&middot; c. 520 BCE</span> — repeatedly invokes <b>Ahura Mazda</b> and frames history as a battle of truth against the Lie, in language closely matching Zoroastrian theology.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/c8.alamy.com/447418c5fb7bce0e4ad6afbb56159033a1027667.jpg" alt="Old Persian cuneiform inscription of Xerxes at Persepolis" loading="lazy"><div class="ev-text"><b>Xerxes' "Daiva" inscription at Persepolis</b> <span class="when">&middot; c. 485 BCE</span> — boasts of destroying a sanctuary of the <i>daiva</i> (demons) and worshipping Auramazda "according to Arta (Asha)" — nearly a creed.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/madainproject.com/e7d856e456ade83f1ea5bafd1035472fd884af57.jpg" alt="Tomb of Darius at Naqsh-e Rostam with winged figure above" loading="lazy"><div class="ev-text"><b>Naqsh-e Rustam royal tombs</b> <span class="when">&middot; c. 5th&ndash;4th c. BCE</span> — Achaemenid kings buried beneath reliefs of the winged Faravahar/Ahura Mazda figure hovering above the king, an icon that endures in the faith today.</div></li>
+                <li><div class="ev-text"><b>Accounts of the Magi</b> <span class="when">&middot; 5th c. BCE</span> — Herodotus describes Persian priests, the <i>magoi</i>, who perform sacrifices and interpret dreams; the earliest outside literary testimony to the priestly tradition.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/7d7ab7d7da1a2aecb2ed56ca967661f14e521146.jpg" alt="Ruins of Takht-e Soleyman fire temple around its sacred lake" loading="lazy"><div class="ev-text"><b>Takht-e Soleyman (Adur Gushnasp fire temple)</b> <span class="when">&middot; Sasanian era, 3rd&ndash;7th c. CE</span> — one of the best-preserved archaeological fire temples of ancient Iran, built around a sacred lake.</div></li>
+                <li><div class="ev-text"><b>Deity evidence — Ardashir I's coinage</b> <span class="when">&middot; c. 224&ndash;240 CE</span> — the founder of the Sasanian Empire issued coins showing a <b>fire altar flanked by attendants</b>, the visual heart of later Zoroastrian iconography.</div></li>
+            </ul>
+            <p class="note"><b>Note:</b> Zarathustra himself may have lived as early as 1500&ndash;1000 BCE, but no artifacts from that era survive. The oldest surviving Avesta manuscripts are medieval (c. 13th&ndash;14th c. CE).</p>
+        </div>
+    </article>
+
+    <!-- JUDAISM -->
+    <article class="religion-card" id="judaism">
+        <div class="date-block">
+            <p class="era">1207<br>BCE</p>
+            <p class="era-sub">to 1st c. CE</p>
+            <div class="rule"></div>
+        </div>
+        <div class="card-body">
+            <h2>Judaism</h2>
+            <p class="artifact">Stelae, amulets, ostraca, and the greatest manuscript find ever</p>
+            <ul>
+                <li><img src="https://kimi-web-img.kimi.ai/img/thumb.wikimedia.org/69a8daff306c9232073f8d52b543825635aa508a.jpg" alt="The Merneptah Stele" loading="lazy"><div class="ev-text"><b>Merneptah Stele</b> <span class="when">&middot; c. 1207 BCE</span> — an Egyptian victory stele bearing the earliest known mention of "Israel" outside the Bible: "Israel is laid waste, its seed is no more."</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/thumb.wikimedia.org/b70aa035e3cfd130d906a1314de240d87d632894.JPG" alt="The Mesha Stele" loading="lazy"><div class="ev-text"><b>Mesha Stele</b> <span class="when">&middot; c. 840 BCE</span> — a Moabite king boasts of conquering Israelite towns "for Chemosh" and taking vessels of Yahweh; the earliest mention of the Israelite deity outside the Bible.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/c1b6b6133977defddc6eba428b833e784e0756bb.jpg" alt="Tel Dan stele fragment mentioning the House of David" loading="lazy"><div class="ev-text"><b>Tel Dan stele</b> <span class="when">&middot; c. 9th&ndash;8th c. BCE</span> — an Aramean victory inscription mentioning the "House of David," the earliest reference to David.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/img.wikiwand.com/0dbc4c8709d22aadb37453851d4d8a421f618a60.jpg" alt="Drawing of the Kuntillet Ajrud pithos with figures and inscriptions" loading="lazy"><div class="ev-text"><b>Kuntillet Ajrud inscriptions</b> <span class="when">&middot; c. 800 BCE</span> — blessings "by Yahweh of Samaria and his asherah" painted beside drawings of a cow and Bes-like figures; a rare window into pre-exilic Israelite folk religion.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/thumb.wikimedia.org/d763792f6d361067219968181036d620a15ddc87.jpg" alt="Judean pillar figurines holding breasts, interpreted as the goddess Asherah" loading="lazy"><div class="ev-text"><b>Deity evidence — Judean pillar figurines</b> <span class="when">&middot; c. 750&ndash;586 BCE</span> — thousands of clay female figurines cradling their breasts, found in Judahite homes and widely interpreted as the goddess <b>Asherah</b>, Yahweh's once-consort.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/ketefhinnomsilverscrolls.github.io/7d018d73d7ffaa6ab124772c4babe494b04bb619.jpg" alt="Ketef Hinnom silver scroll amulet with priestly blessing" loading="lazy"><div class="ev-text"><b>Ketef Hinnom silver scroll amulets</b> <span class="when">&middot; 7th&ndash;6th c. BCE</span> — tiny silver scrolls from a Jerusalem tomb inscribed with the priestly blessing of Numbers 6:24&ndash;26, the oldest physical biblical text ever found.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/www.worldhistory.org/5c169bb92faff503a128f1c3f671e420999846e2.jpg" alt="Ceramic jars that held the Dead Sea Scrolls" loading="lazy"><div class="ev-text"><b>Dead Sea Scrolls</b> <span class="when">&middot; c. 250 BCE &ndash; 70 CE</span> — some 900 manuscripts hidden in the Qumran caves, including the earliest known copies of the Hebrew Bible, roughly a thousand years older than any previously surviving biblical manuscript.</div></li>
+            </ul>
+            <p class="note"><b>Note:</b> Together, these finds trace the evolution from the Yahwistic religion of Iron Age Israel — where goddesses were worshipped in homes — to the aniconic, scriptural Judaism of the Second Temple period.</p>
+        </div>
+    </article>
+
+    <!-- CHRISTIANITY -->
+    <article class="religion-card" id="christianity">
+        <div class="date-block">
+            <p class="era">c. 125<br>CE</p>
+            <p class="era-sub">to 4th c. CE</p>
+            <div class="rule"></div>
+        </div>
+        <div class="card-body">
+            <h2>Christianity</h2>
+            <p class="artifact">From secret scraps of papyrus to basilicas</p>
+            <ul>
+                <li><img src="https://kimi-web-img.kimi.ai/img/thumb.wikimedia.org/9b9286ba4629616aa1b3e766b3af6753b7688f18.jpg" alt="The Rylands P52 papyrus fragment" loading="lazy"><div class="ev-text"><b>P52 (Rylands fragment)</b> <span class="when">&middot; c. 125 CE</span> — a papyrus fragment of John's Gospel, the oldest known New Testament manuscript.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/brentnongbri.com/55daedcaed3d1feec0ed61dcf3994042704eb5cb.jpg" alt="The Alexamenos graffito showing a crucified donkey" loading="lazy"><div class="ev-text"><b>Alexamenos graffito</b> <span class="when">&middot; c. 200 CE</span> — a mocking Roman wall carving of a man worshipping a crucified donkey, the earliest pictorial reference to the crucifixion.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/scotland.op.org/410c31007e6ea71fcc1ca82518a4f2176277ef2c.jpeg" alt="Good Shepherd fresco from the Catacombs of Priscilla" loading="lazy"><div class="ev-text"><b>Deity evidence — the Good Shepherd, Catacombs of Priscilla</b> <span class="when">&middot; c. 200&ndash;250 CE</span> — Christ portrayed as a shepherd carrying a sheep on his shoulders; the earliest known image of Jesus. For centuries, Christians avoided depicting the crucified adult Christ.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/images.squarespace-cdn.com/e2b80a153241d2400e144bd88e881111b7514ea7.jpg" alt="Megiddo mosaic church floor inscription" loading="lazy"><div class="ev-text"><b>Megiddo mosaic church inscription</b> <span class="when">&middot; c. 230 CE</span> — a mosaic floor praying to "God Jesus Christ," the earliest known church dedication.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/39c8665185bc733926c97ddc2f7f4e68e84226a6.jpg" alt="Christ healing the paralytic, wall painting from Dura-Europos" loading="lazy"><div class="ev-text"><b>Dura-Europos house church</b> <span class="when">&middot; c. 233 CE</span> — a private home converted into a church with a baptistery and the earliest known Christian narrative wall paintings.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/dynamic-media-cdn.tripadvisor.com/039ceeb1b481a874bdf576ab5a229dfd8485597f.jpg" alt="Ruins of the Aqaba church in Jordan" loading="lazy"><div class="ev-text"><b>Aqaba church</b> <span class="when">&middot; c. 293 CE</span> — in modern Jordan, often identified as the earliest purpose-built church building yet excavated.</div></li>
+            </ul>
+            <p class="note"><b>Note:</b> Because early Christians were a persecuted minority, physical evidence appears surprisingly late — mostly after 200 CE, then exploding after Constantine's Edict of Milan (313 CE).</p>
+        </div>
+    </article>
+
+    <!-- ISLAM -->
+    <article class="religion-card" id="islam">
+        <div class="date-block">
+            <p class="era">c. 644<br>CE</p>
+            <p class="era-sub">to 8th c. CE</p>
+            <div class="rule"></div>
+        </div>
+        <div class="card-body">
+            <h2>Islam</h2>
+            <p class="artifact">Qur'an folios, the first inscriptions, and the earliest monuments</p>
+            <ul>
+                <li><img src="https://kimi-web-img.kimi.ai/img/c8.alamy.com/23140b2303817096e72d08a2fe8373145a9fe809.jpg" alt="Folio of the Birmingham Quran manuscript" loading="lazy"><div class="ev-text"><b>The Birmingham Qur'an folios</b> <span class="when">&middot; 568&ndash;645 CE</span> — radiocarbon-dated parchment possibly written within Muhammad's own lifetime; the oldest known Qur'an manuscript.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/lh5.googleusercontent.com/5729078cddc029f0003139fea305433bbf26de0a.jpg" alt="The Zuhayr inscription carved into rock in Saudi Arabia" loading="lazy"><div class="ev-text"><b>Zuhayr inscription</b> <span class="when">&middot; 644 CE</span> — a rock carving in Saudi Arabia dated to "year 24" of the hijri era; the earliest known Arabic inscription referencing the era of Muhammad.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/thumb.wikimedia.org/fc6d2c0d66b95d827d819d328988db6a0cd760df.jpg" alt="PERF 558, the earliest dated Arabic papyrus" loading="lazy"><div class="ev-text"><b>PERF 558 papyrus</b> <span class="when">&middot; 642 CE</span> — a Greek-Arabic receipt from Egypt, the earliest dated document of the Islamic state.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/coinweek.com/714dd37c3b6f7a62bd2b9ba13046821591c03731.jpg" alt="Umayyad gold coin with standing caliph and obverse inscription" loading="lazy"><div class="ev-text"><b>Deity evidence — "standing caliph" coinage</b> <span class="when">&middot; c. 685&ndash;705 CE</span> — gold solidi naming <b>"Muhammad rasul Allah"</b> (Muhammad is the messenger of God); since Islam forbids images of God, the divine is conveyed through calligraphy rather than a face.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/upload.wikimedia.org/fe581b5cfaa44ce3f38eb1962559fd180cfcb548.jpg" alt="A folio of the Sanaa palimpsest" loading="lazy"><div class="ev-text"><b>The Sanaa palimpsest</b> <span class="when">&middot; c. 671&ndash;705 CE</span> — a Qur'an whose lower erased text differs slightly from the standard text, a unique witness to the scripture's early transmission.</div></li>
+                <li><img src="https://kimi-web-img.kimi.ai/img/cdn.britannica.com/13f787681e4f7a12e442d0454618f9d83e473d36.jpg" alt="The Dome of the Rock in Jerusalem" loading="lazy"><div class="ev-text"><b>Dome of the Rock</b> <span class="when">&middot; 691&ndash;692 CE</span> — the earliest surviving Islamic monument; its interior and exterior bands carry the earliest lengthy Islamic texts carved in stone, predating complete Qur'an manuscripts.</div></li>
+            </ul>
+            <p class="note"><b>Note:</b> Strictly speaking, the "oldest evidence" for Islam sits unusually close to the religion's founding — some manuscripts may even predate the traditional dating of Muhammad's death (632 CE).</p>
+        </div>
+    </article>
+
+    <!-- SUMMARY -->
+    <section class="summary">
+        <h2>Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Religion</th>
+                    <th>Oldest Evidence</th>
+                    <th>Approx. Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Hinduism</td><td>Kalibangan fire altars / Pashupati seal (Indus Valley tradition)</td><td>c. 2500&ndash;1900 BCE</td></tr>
+                <tr><td>Zoroastrianism</td><td>Behistun inscription of Darius I</td><td>c. 520 BCE</td></tr>
+                <tr><td>Judaism</td><td>Merneptah Stele (earliest mention of Israel)</td><td>c. 1207 BCE</td></tr>
+                <tr><td>Christianity</td><td>P52 Gospel fragment</td><td>c. 125 CE</td></tr>
+                <tr><td>Islam</td><td>Birmingham Qur'an manuscript</td><td>c. 568&ndash;645 CE</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    <p>Dates and interpretations reflect mainstream scholarship but remain debated. Images are hot-linked from their sources (Wikimedia, museums, Britannica) for reference and educational use.</p>
+</footer>
+
+</body>
+</html>
